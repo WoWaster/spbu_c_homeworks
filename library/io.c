@@ -26,8 +26,14 @@ void inputArrayOfInts(char* prompt, int* array, int length)
     }
 }
 
+/**
+ * printArrayOfInts prints description of array and then prints space separated array elements
+ * @param text String describing data stored in array
+ * @param array Array with data
+ * @param length Length of the given array
+ */
 void printArrayOfInts(char* text, int* array, int length)
-{ // TODO: write docs
+{
     printf("%s", text);
     for (int i = 0; i < length; ++i) {
         printf("%d ", array[i]);
