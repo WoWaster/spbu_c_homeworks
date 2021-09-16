@@ -21,16 +21,12 @@ int computeQuotient(int dividend, int divisor)
 }
 
 /**
- * Helper function for computeQuotient which checks input and decides how to properly get value
+ * Helper function for computeQuotient which decides how to properly get value
  * based on dividend's and divisor's signs
+ * WARNING: No check for division by zero
  */
 int solveForQuotient(int dividend, int divisor)
 {
-    if (divisor == 0) {
-        printf("ERROR: Деление на 0 невозможно!\n");
-        abort();
-    }
-
     if (dividend >= 0 && divisor > 0)
         return computeQuotient(dividend, divisor);
     else if (dividend >= 0 && divisor < 0)
@@ -49,6 +45,11 @@ int main()
     printf("Данная программа вычисляет неполное частное от деления a на b.\n");
     inputSingleInt("Введите число a: ", &dividend);
     inputSingleInt("Введите число b: ", &divisor);
+
+    if (divisor == 0) {
+        printf("ERROR: Деление на 0 невозможно!\n");
+        return 1; // Standard exit code for error
+    }
 
     int result = solveForQuotient(dividend, divisor);
 
