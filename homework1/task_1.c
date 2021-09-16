@@ -27,14 +27,14 @@ int computeQuotient(int dividend, int divisor)
  */
 int solveForQuotient(int dividend, int divisor)
 {
-    if (dividend >= 0 && divisor > 0)
-        return computeQuotient(dividend, divisor);
-    else if (dividend >= 0 && divisor < 0)
-        return -computeQuotient(dividend, abs(divisor));
-    else if (dividend < 0 && divisor > 0)
-        return -computeQuotient(abs(dividend), divisor) - 1;
-    else
-        return computeQuotient(abs(dividend), abs(divisor)) + 1;
+    int result = computeQuotient(abs(dividend), abs(divisor));
+
+    if (dividend < 0)
+        result = -result - 1;
+    if (divisor < 0)
+        result = -result;
+
+    return result;
 }
 
 int main()
