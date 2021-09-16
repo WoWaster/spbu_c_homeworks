@@ -43,15 +43,15 @@ int solveForQuotient(int dividend, int divisor)
 
 int main()
 {
-    int a = 0;
-    int b = 0;
+    int dividend = 0;
+    int divisor = 0;
 
     printf("Данная программа вычисляет неполное частное от деления a на b.\n");
-    inputSingleInt("Введите число a: ", &a);
-    inputSingleInt("Введите число b: ", &b);
+    inputSingleInt("Введите число a: ", &dividend);
+    inputSingleInt("Введите число b: ", &divisor);
 
-    int result = solveForQuotient(a, b);
+    int result = solveForQuotient(dividend, divisor);
 
-    printf("Неполное частное от деления %d на %d равно %d.\n", a, b, result);
+    printf("Неполное частное от деления %d на %d равно %d.\n", dividend, divisor, result);
     return 0;
 }
