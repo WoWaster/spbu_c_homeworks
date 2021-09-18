@@ -12,3 +12,6 @@ add_library(array_lib STATIC library/array.c)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
+
+add_executable(HW1_Task_5 homework1/task_5.c)
+target_link_libraries(HW1_Task_5 io_lib)
