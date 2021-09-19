@@ -1,4 +1,14 @@
 #include "array.h"
+/**
+ * Function swaps array[firstIndex] and array[secondIndex]
+ * WARNING: No check for indexes out of array bounds
+ */
+void swap(int* array, int firstIndex, int secondIndex)
+{
+    int temp = array[firstIndex];
+    array[firstIndex] = array[secondIndex];
+    array[secondIndex] = temp;
+}
 
 /**
  * fillArray fills array with given value
