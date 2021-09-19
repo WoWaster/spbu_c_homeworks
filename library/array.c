@@ -38,10 +38,9 @@ void reverseArray(int* array, int length)
 void reverseArraySlice(int* array, int start, int end)
 {
     end--;
-    for (; start < end;
-         start++, end--) {
-        int temp = array[start];
-        array[start] = array[end];
-        array[end] = temp;
+    while (start < (start + end + 1) / 2) {
+        swap(array, start, end);
+        start++;
+        end--;
     }
 }
