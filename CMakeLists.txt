@@ -8,6 +8,10 @@ set(SOURCE_LIB
         )
 add_library(library ${SOURCE_LIB})
 add_library(io_lib STATIC library/io.c)
+add_library(array_lib STATIC library/array.c)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
+
+add_executable(HW1_Task_3 homework1/task_3.c)
+target_link_libraries(HW1_Task_3 io_lib array_lib)
