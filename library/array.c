@@ -22,14 +22,11 @@ void fillArray(int value, int* array, int length)
 
 /**
  * reverseArray reverses full array
+ * Actually is an alias for reverseArraySlice(array, 0, length);
  */
 void reverseArray(int* array, int length)
 {
-    for (int i = 0; i < (length / 2); ++i) {
-        int temp = array[i];
-        array[i] = array[length - i - 1];
-        array[length - i - 1] = temp;
-    }
+    reverseArraySlice(array, 0, length);
 }
 
 /**
