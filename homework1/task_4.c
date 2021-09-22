@@ -2,8 +2,8 @@
  * Написать программу, печатающую все простые числа, не превосходящие заданного числа.
  */
 
-#include "../library//array.h"
-#include "../library//io.h"
+#include "../library/array.h"
+#include "../library/io.h"
 #include <stdio.h>
 #include <stdlib.h>
 /**
