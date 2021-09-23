@@ -18,3 +18,6 @@ target_link_libraries(HW1_Task_3 io_lib array_lib)
 
 add_executable(HW1_Task_4 homework1/task_4.c)
 target_link_libraries(HW1_Task_4 io_lib array_lib)
+
+add_executable(HW1_Task_5 homework1/task_5.c)
+target_link_libraries(HW1_Task_5 io_lib)
