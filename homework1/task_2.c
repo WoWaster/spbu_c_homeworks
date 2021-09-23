@@ -5,23 +5,21 @@
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-int findMaxNonUniqueElement(const int* arr,
-    int length)
+/**
+ * WARNING: No check for array of unique values, INT_MIN as return value may be faulty
+ */
+int findMaxNonUniqueElement(const int* arr, int length)
 {
-    int* elements = calloc(UINT_MAX, sizeof(int));
-    unsigned int delta = INT_MAX + 1u;
+    int max = INT_MIN;
     for (int i = 0; i < length; ++i) {
-        elements[arr[i] + delta]++;
-    }
-    int max = 0;
-    for (unsigned int i = UINT_MAX; i >= 0; i--) {
-        if (elements[i] > 1) {
-            max = (int)(i - delta);
-            break;
+        int count = 1;
+        for (int j = i+1; j < length; ++j) {
+            if (arr[i]==arr[j])
+                count++;
         }
+        if(count>1 && max < arr[i])
+            max = arr[i];
     }
-    free(elements);
     return max;
 }
 
