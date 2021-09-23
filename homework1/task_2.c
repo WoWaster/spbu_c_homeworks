@@ -13,11 +13,11 @@ int findMaxNonUniqueElement(const int* arr, int length)
     int max = INT_MIN;
     for (int i = 0; i < length; ++i) {
         int count = 1;
-        for (int j = i+1; j < length; ++j) {
-            if (arr[i]==arr[j])
+        for (int j = i + 1; j < length; ++j) {
+            if (arr[i] == arr[j])
                 count++;
         }
-        if(count>1 && max < arr[i])
+        if (count > 1 && max < arr[i])
             max = arr[i];
     }
     return max;
