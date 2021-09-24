@@ -46,3 +46,20 @@ bool hasKey(LinkedMap* map, const char* key)
         return true;
     return false;
 }
+
+void put(LinkedMap* map, const char* key, int value)
+{
+    if (hasKey(map, key)) {
+        Node* node = getNode(map, key);
+        node->value = value;
+        return;
+    }
+    Node* node = newNode(key, value);
+    if (map->first == NULL) {
+        map->first = node;
+        map->last = node;
+        return;
+    }
+    map->last->nextElement = node;
+    map->last = node;
+}

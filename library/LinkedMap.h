@@ -8,4 +8,5 @@ typedef struct Node Node;
 
 LinkedMap* newMap();
 bool hasKey(LinkedMap* map, const char* key);
+void put(LinkedMap* map, const char* key, int value);
 #endif // SPBU_C_HOMEWORKS_LINKEDMAP_H
