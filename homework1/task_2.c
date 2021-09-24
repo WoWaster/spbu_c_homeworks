@@ -30,7 +30,11 @@ int main()
     int* arr = calloc(n, sizeof(int));
     inputArrayOfInts("Введите содержимое массива: ", arr, n);
 
-    printf("Максимальный элемент, встречающийся более одного раза равен %d", findMaxNonUniqueElement(arr, n));
+    int position = findMaxNonUniqueElement(arr, n);
+    if (position != -1)
+        printf("Максимальный элемент, встречающийся более одного раза равен %d", arr[position]);
+    else
+        printf("Все элементы встречаюся в массиве только один раз.");
 
     free(arr);
     return 0;
