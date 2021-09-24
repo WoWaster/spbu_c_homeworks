@@ -1,6 +1,7 @@
 #include "LinkedMap.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct LinkedMap {
     Node* first;
@@ -24,7 +25,7 @@ LinkedMap* newMap()
 Node* newNode(const char* key, int value)
 {
     Node* node = malloc(sizeof(Node));
-    node->key = key;
+    node->key = strdup(key);
     node->value = value;
     node->nextElement = NULL;
     return node;
@@ -34,7 +35,7 @@ Node* getNode(LinkedMap* map, const char* key)
 {
     Node* currentElement = map->first;
     while (currentElement != NULL) {
-        if (currentElement->key == key)
+        if (strcmp(currentElement->key, key) == 0)
             return currentElement;
         currentElement = currentElement->nextElement;
     }
