@@ -10,4 +10,5 @@ LinkedMap* newMap();
 bool hasKey(LinkedMap* map, const char* key);
 void put(LinkedMap* map, const char* key, int value);
 int getValue(LinkedMap* map, const char* key);
+void printMap(LinkedMap* map);
 #endif // SPBU_C_HOMEWORKS_LINKEDMAP_H

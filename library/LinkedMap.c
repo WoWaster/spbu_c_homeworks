@@ -1,4 +1,5 @@
 #include "LinkedMap.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 struct LinkedMap {
@@ -67,4 +68,13 @@ void put(LinkedMap* map, const char* key, int value)
 int getValue(LinkedMap* map, const char* key)
 {
     return getNode(map, key)->value;
+}
+
+void printMap(LinkedMap* map)
+{
+    Node* currentElement = map->first;
+    while (currentElement != NULL) {
+        printf("%s: %d\n", currentElement->key, currentElement->value);
+        currentElement = currentElement->nextElement;
+    }
 }
