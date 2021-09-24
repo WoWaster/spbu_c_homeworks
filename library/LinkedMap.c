@@ -78,3 +78,14 @@ void printMap(LinkedMap* map)
         currentElement = currentElement->nextElement;
     }
 }
+
+void freeMap(LinkedMap* map)
+{
+    Node* currentElement = map->first;
+    while (currentElement != NULL) {
+        Node* nextElement = currentElement->nextElement;
+        free(currentElement);
+        currentElement = nextElement;
+    }
+    free(map);
+}
