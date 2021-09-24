@@ -39,3 +39,10 @@ Node* getNode(LinkedMap* map, const char* key)
     }
     return NULL;
 }
+
+bool hasKey(LinkedMap* map, const char* key)
+{
+    if (getNode(map, key) != NULL)
+        return true;
+    return false;
+}
