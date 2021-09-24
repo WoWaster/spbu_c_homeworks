@@ -1,4 +1,5 @@
 #include "LinkedMap.h"
+#include <stdlib.h>
 
 struct LinkedMap {
     Node* first;
@@ -10,3 +11,11 @@ struct Node {
     int value;
     Node* nextElement;
 };
+
+LinkedMap* newMap()
+{
+    LinkedMap* map = malloc(sizeof(LinkedMap));
+    map->first = NULL;
+    map->last = NULL;
+    return map;
+}
