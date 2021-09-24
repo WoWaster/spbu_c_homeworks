@@ -19,3 +19,12 @@ LinkedMap* newMap()
     map->last = NULL;
     return map;
 }
+
+Node* newNode(const char* key, int value)
+{
+    Node* node = malloc(sizeof(Node));
+    node->key = key;
+    node->value = value;
+    node->nextElement = NULL;
+    return node;
+}
