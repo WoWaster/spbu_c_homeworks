@@ -3,8 +3,16 @@
 
 #include <stdbool.h>
 
-typedef struct LinkedMap LinkedMap;
-typedef struct Node Node;
+typedef struct LinkedMap {
+   struct Node* first;
+    struct Node* last;
+} LinkedMap;
+
+typedef struct Node {
+    const char* key;
+    int value;
+    struct Node* nextElement;
+} Node;
 
 LinkedMap* newMap();
 bool hasKey(LinkedMap* map, const char* key);
