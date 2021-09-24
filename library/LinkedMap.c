@@ -63,3 +63,8 @@ void put(LinkedMap* map, const char* key, int value)
     map->last->nextElement = node;
     map->last = node;
 }
+
+int getValue(LinkedMap* map, const char* key)
+{
+    return getNode(map, key)->value;
+}
