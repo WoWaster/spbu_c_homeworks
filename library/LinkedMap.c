@@ -28,3 +28,14 @@ Node* newNode(const char* key, int value)
     node->nextElement = NULL;
     return node;
 }
+
+Node* getNode(LinkedMap* map, const char* key)
+{
+    Node* currentElement = map->first;
+    while (currentElement != NULL) {
+        if (currentElement->key == key)
+            return currentElement;
+        currentElement = currentElement->nextElement;
+    }
+    return NULL;
+}
