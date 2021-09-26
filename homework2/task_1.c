@@ -1,8 +1,9 @@
 #include "../library/LinkedMap.h"
 #include <stdio.h>
 
-void fillMapFromFile(FILE* file, LinkedMap* map)
+void fillMapFromFile(LinkedMap* map, const char* filename)
 {
+    FILE* file = fopen(filename, "r");
     char buffer[128] = "";
     while (fscanf(file, "%s", buffer) != EOF) {
         if (hasKey(map, buffer))
@@ -10,6 +11,7 @@ void fillMapFromFile(FILE* file, LinkedMap* map)
         else
             put(map, buffer, 1);
     }
+    fclose(file);
 }
 
 void generateCSVFromMap(LinkedMap* map, const char* filename)
@@ -32,14 +34,11 @@ int main(int argc, char* argv[])
         printf("Too many arguments!\n");
         return 0;
     }
-
-    FILE* input = fopen(argv[1], "r");
     LinkedMap* words = newMap();
 
-    fillMapFromFile(input, words);
+    fillMapFromFile(words, argv[1]);
     generateCSVFromMap(words, argv[2]);
 
-    fclose(input);
     freeMap(words);
     return 0;
 }
