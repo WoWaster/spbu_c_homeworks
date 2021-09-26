@@ -4,7 +4,7 @@
 #include <stdbool.h>
 
 typedef struct LinkedMap {
-   struct Node* first;
+    struct Node* first;
     struct Node* last;
 } LinkedMap;
 

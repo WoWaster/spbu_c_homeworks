@@ -5,9 +5,9 @@ void fillMapFromFile(FILE* file, LinkedMap* map)
 {
     char buffer[127] = "";
     while (fscanf(file, "%s", buffer) != EOF) {
-        if (hasKey(map, buffer)) {
+        if (hasKey(map, buffer))
             put(map, buffer, getValue(map, buffer) + 1);
-        } else
+        else
             put(map, buffer, 1);
     }
 }
