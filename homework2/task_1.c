@@ -3,7 +3,7 @@
 
 void fillMapFromFile(FILE* file, LinkedMap* map)
 {
-    char buffer[127] = "";
+    char buffer[128] = "";
     while (fscanf(file, "%s", buffer) != EOF) {
         if (hasKey(map, buffer))
             put(map, buffer, getValue(map, buffer) + 1);
