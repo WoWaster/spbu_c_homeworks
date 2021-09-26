@@ -1,4 +1,5 @@
 #include "../library/LinkedMap.h"
+#include "../library/io.h"
 #include <stdio.h>
 
 void fillMapFromFile(LinkedMap* map, const char* filename)
@@ -34,6 +35,11 @@ int main(int argc, char* argv[])
         printf("Too many arguments!\n");
         return 0;
     }
+    if (!isFileExists(argv[1])) {
+        printf("Input file does not exists.");
+        return 0;
+    }
+
     LinkedMap* words = newMap();
 
     fillMapFromFile(words, argv[1]);
