@@ -40,3 +40,13 @@ void printArrayOfInts(char* text, int* array, int length)
     }
     printf("\n");
 }
+
+bool isFileExists(const char* filename)
+{
+    FILE* file;
+    if ((file = fopen(filename, "r"))) {
+        fclose(file);
+        return 1;
+    }
+    return 0;
+}
