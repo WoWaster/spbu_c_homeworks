@@ -7,7 +7,6 @@ LinkedMap* newMap()
 {
     LinkedMap* map = malloc(sizeof(LinkedMap));
     map->first = NULL;
-    map->last = NULL;
     return map;
 }
 
@@ -46,13 +45,8 @@ void put(LinkedMap* map, const char* key, int value)
         return;
     }
     Node* node = newNode(key, value);
-    if (map->first == NULL) {
-        map->first = node;
-        map->last = node;
-        return;
-    }
-    map->last->nextNode = node;
-    map->last = node;
+    node->nextNode = map->first;
+    map->first = node;
 }
 
 int getValue(LinkedMap* map, const char* key)

@@ -5,7 +5,6 @@
 
 typedef struct LinkedMap {
     struct Node* first;
-    struct Node* last;
 } LinkedMap;
 
 typedef struct Node {
