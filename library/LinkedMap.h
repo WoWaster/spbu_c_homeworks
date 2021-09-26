@@ -11,7 +11,7 @@ typedef struct LinkedMap {
 typedef struct Node {
     const char* key;
     int value;
-    struct Node* nextElement;
+    struct Node* nextNode;
 } Node;
 
 LinkedMap* newMap();

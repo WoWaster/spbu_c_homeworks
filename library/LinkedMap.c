@@ -16,7 +16,7 @@ Node* newNode(const char* key, int value)
     Node* node = malloc(sizeof(Node));
     node->key = strdup(key);
     node->value = value;
-    node->nextElement = NULL;
+    node->nextNode = NULL;
     return node;
 }
 
@@ -26,7 +26,7 @@ Node* getNode(LinkedMap* map, const char* key)
     while (currentElement != NULL) {
         if (strcmp(currentElement->key, key) == 0)
             return currentElement;
-        currentElement = currentElement->nextElement;
+        currentElement = currentElement->nextNode;
     }
     return NULL;
 }
@@ -51,7 +51,7 @@ void put(LinkedMap* map, const char* key, int value)
         map->last = node;
         return;
     }
-    map->last->nextElement = node;
+    map->last->nextNode = node;
     map->last = node;
 }
 
@@ -65,7 +65,7 @@ void printMap(LinkedMap* map)
     Node* currentElement = map->first;
     while (currentElement != NULL) {
         printf("%s: %d\n", currentElement->key, currentElement->value);
-        currentElement = currentElement->nextElement;
+        currentElement = currentElement->nextNode;
     }
 }
 
@@ -73,7 +73,7 @@ void freeMap(LinkedMap* map)
 {
     Node* currentElement = map->first;
     while (currentElement != NULL) {
-        Node* nextElement = currentElement->nextElement;
+        Node* nextElement = currentElement->nextNode;
         free(currentElement->key);
         free(currentElement);
         currentElement = nextElement;

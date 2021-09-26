@@ -18,7 +18,7 @@ void generateCSVFromMap(LinkedMap* map, const char* filename)
     Node* currentElement = map->first;
     while (currentElement != NULL) {
         fprintf(output, "%s,%d\n", currentElement->key, currentElement->value);
-        currentElement = currentElement->nextElement;
+        currentElement = currentElement->nextNode;
     }
     fclose(output);
 }
