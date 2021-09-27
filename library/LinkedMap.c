@@ -21,12 +21,9 @@ Node* newNode(const char* key, int value)
 
 Node* getNode(LinkedMap* map, const char* key)
 {
-    Node* currentElement = map->first;
-    while (currentElement != NULL) {
-        if (strcmp(currentElement->key, key) == 0)
-            return currentElement;
-        currentElement = currentElement->nextNode;
-    }
+    for (Node* current = map->first; current; current = current->nextNode)
+        if (strcmp(current->key, key) == 0)
+            return current;
     return NULL;
 }
 
@@ -56,11 +53,8 @@ int getValue(LinkedMap* map, const char* key)
 
 void printMap(LinkedMap* map)
 {
-    Node* currentElement = map->first;
-    while (currentElement != NULL) {
-        printf("%s: %d\n", currentElement->key, currentElement->value);
-        currentElement = currentElement->nextNode;
-    }
+    for (Node* current = map->first; current; current = current->nextNode)
+        printf("%s: %d\n", current->key, current->value);
 }
 
 void freeMap(LinkedMap* map)

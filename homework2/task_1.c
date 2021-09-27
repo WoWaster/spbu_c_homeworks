@@ -18,11 +18,8 @@ void fillMapFromFile(LinkedMap* map, const char* filename)
 void generateCSVFromMap(LinkedMap* map, const char* filename)
 {
     FILE* output = fopen(filename, "w");
-    Node* currentElement = map->first;
-    while (currentElement != NULL) {
-        fprintf(output, "%s,%d\n", currentElement->key, currentElement->value);
-        currentElement = currentElement->nextNode;
-    }
+    for (Node* current = map->first; current; current = current->nextNode)
+        fprintf(output, "%s,%d\n", current->key, current->value);
     fclose(output);
 }
 
