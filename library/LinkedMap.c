@@ -29,7 +29,7 @@ Node* getNode(LinkedMap* map, const char* key)
 
 bool hasKey(LinkedMap* map, const char* key)
 {
-    if (getNode(map, key) != NULL)
+    if (getNode(map, key))
         return true;
     return false;
 }
@@ -60,7 +60,7 @@ void printMap(LinkedMap* map)
 void freeMap(LinkedMap* map)
 {
     Node* currentElement = map->first;
-    while (currentElement != NULL) {
+    while (currentElement) {
         Node* nextElement = currentElement->nextNode;
         free((char*)currentElement->key);
         free(currentElement);
