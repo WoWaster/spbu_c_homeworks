@@ -29,9 +29,7 @@ Node* getNode(LinkedMap* map, const char* key)
 
 bool hasKey(LinkedMap* map, const char* key)
 {
-    if (getNode(map, key))
-        return true;
-    return false;
+    return getNode(map, key);
 }
 
 void put(LinkedMap* map, const char* key, int value)
