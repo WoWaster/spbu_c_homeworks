@@ -46,8 +46,6 @@ String* newString(const char* input)
 
 /**
  * You must free substring by using free not freeString.
- * @param string
- * @param template
  * @return new String where head=template[0] and tail=template[-1]
  */
 String* find(String* string, const char* template)

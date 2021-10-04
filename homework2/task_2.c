@@ -19,7 +19,7 @@ void processData(char* inputFile, char* outputFile)
     int N = 0;
     fscanf(input, "%d", &N);
 
-    for (int i = 0; i < 30; ++i) {
+    for (int i = 0; i < N; ++i) {
         char command[8] = "";
         char arg1[64] = "";
         char arg2[64] = "";
@@ -28,19 +28,19 @@ void processData(char* inputFile, char* outputFile)
         fscanf(input, "%s", arg1);
         fscanf(input, "%s", arg2);
 
-        if (strcmp(command, "REPLACE") == 0) {
+        if (strcmp(command, "REPLACE") == 0)
             replace(string, arg1, arg2);
-        } else if (strcmp(command, "INSERT") == 0) {
+        else if (strcmp(command, "INSERT") == 0)
             insert(string, arg1, arg2);
-        } else if (strcmp(command, "DELETE") == 0) {
+        else if (strcmp(command, "DELETE") == 0)
             delete (string, arg1, arg2);
-        }
 
         char* charString = stringToChar(string);
         fprintf(output, "%s\n", charString);
         free(charString);
     }
 
+    freeString(string);
     fclose(input);
     fclose(output);
 }
