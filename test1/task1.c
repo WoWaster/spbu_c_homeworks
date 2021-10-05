@@ -36,11 +36,32 @@ int dotProduct(Vector* vec1, Vector* vec2)
     if (getVectorDimension(vec1) != getVectorDimension(vec2))
         return 0;
     int result = 0;
-    for (int i = 0; i < getVectorDimension(vec1); ++i) {
+    for (int i = 0; i < getVectorDimension(vec1); ++i)
         result += vec1->values[i] * vec2->values[i];
-    }
 
     return result;
+}
+
+Vector* addVectors(Vector* vec1, Vector* vec2)
+{
+    if (getVectorDimension(vec1) != getVectorDimension(vec2))
+        return NULL;
+    int* sum = calloc(getVectorDimension(vec1), sizeof(int));
+    for (int i = 0; i < getVectorDimension(vec1); ++i)
+        sum[i] = vec1->values[i] + vec2->values[i];
+    Vector* sumVector = createVector(getVectorDimension(vec1), sum);
+    return sumVector;
+}
+
+Vector* subtractVectors(Vector* vec1, Vector* vec2)
+{
+    if (getVectorDimension(vec1) != getVectorDimension(vec2))
+        return NULL;
+    int* difference = calloc(getVectorDimension(vec1), sizeof(int));
+    for (int i = 0; i < getVectorDimension(vec1); ++i)
+        difference[i] = vec1->values[i] - vec2->values[i];
+    Vector* diffVector = createVector(getVectorDimension(vec1), difference);
+    return diffVector;
 }
 
 void printVector(Vector* vector)
@@ -74,7 +95,19 @@ int main(int argc, char* argv[])
 
     printf("Скалярное произведение Vector1 и Vector2 равно: %d \n", dotProduct(vec1, vec2));
 
+    Vector* sum = addVectors(vec1, vec2);
+    Vector* diff = subtractVectors(vec1, vec2);
+
+    printf("Сумма векторов: ");
+    printVector(sum);
+    printf("Разность векторов: ");
+    printVector(diff);
+
     freeVector(vec1);
     freeVector(vec2);
+
+    freeVector(sum);
+    freeVector(diff);
+
     return 0;
 }
