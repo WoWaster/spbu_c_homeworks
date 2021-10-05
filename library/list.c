@@ -1,4 +1,4 @@
-#include "List.h"
+#include "list.h"
 
 #include <stdbool.h>
 #include <stddef.h>
