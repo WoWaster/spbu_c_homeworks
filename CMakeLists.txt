@@ -30,4 +30,4 @@ add_executable(HW2_Task_1 homework2/task_1.c)
 target_link_libraries(HW2_Task_1 io_lib LinkedMap)
 
 add_executable(Test1_task1 test1/task1.c)
-target_link_libraries(Test1_task1 io_lib)
+target_link_libraries(Test1_task1 io_lib m)
