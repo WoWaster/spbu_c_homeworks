@@ -14,4 +14,5 @@ bool locate(int data, List* l, int* position);
 int getListSize(List* l);
 void printList(List* lst);
 int* getListAsArray(List* list);
+void freeList(List* list);
 #endif // SPBU_C_HOMEWORKS_LIST_H

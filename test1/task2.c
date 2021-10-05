@@ -40,6 +40,10 @@ void proccessData(char* inputFile, char* outputFile, int a, int b)
 
     fprintf(output, "\n");
 
+    freeList(lessThatA);
+    freeList(inAB);
+    freeList(greaterThanB);
+
     fclose(input);
     fclose(output);
 }

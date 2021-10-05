@@ -122,3 +122,17 @@ int* getListAsArray(List* list)
 
     return array;
 }
+
+void freeList(List* list)
+{
+    ListElement* currentElement = list->head;
+    ListElement* nextElement = NULL;
+
+    while (currentElement) {
+        nextElement = currentElement->nextElement;
+        free(currentElement);
+        currentElement = nextElement;
+    }
+
+    free(list);
+}
