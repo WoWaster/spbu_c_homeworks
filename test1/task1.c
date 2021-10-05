@@ -1,4 +1,5 @@
 #include "../library/io.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -63,6 +64,15 @@ Vector* subtractVectors(Vector* vec1, Vector* vec2)
     Vector* diffVector = createVector(getVectorDimension(vec1), difference);
     return diffVector;
 }
+double vectorLength(Vector* vector)
+{
+    double length = 0;
+    for (int i = 0; i < getVectorDimension(vector); ++i)
+        length += vector->values[i] * vector->values[i];
+
+    length = sqrt(length);
+    return length;
+}
 
 void printVector(Vector* vector)
 {
@@ -85,12 +95,13 @@ int main(int argc, char* argv[])
 
     printf("Vector1: ");
     printVector(vec1);
-    printf("Длина Vector1: %d", getVectorDimension(vec1));
+    printf("Пространство Vector1: %d\n", getVectorDimension(vec1));
+    printf("Длина Vector1: %f", vectorLength(vec1));
     printf("\n");
 
     printf("Vector2: ");
     printVector(vec2);
-    printf("Длина Vector2: %d", getVectorDimension(vec2));
+    printf("Пространство Vector2: %d\n", getVectorDimension(vec2));
     printf("\n");
 
     printf("Скалярное произведение Vector1 и Vector2 равно: %d \n", dotProduct(vec1, vec2));
