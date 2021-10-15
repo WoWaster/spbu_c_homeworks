@@ -65,6 +65,28 @@ bInt32 add(bInt32 binary1, bInt32 binary2)
 }
 
 /**
+ * Multiplies given binary numbers using only shifting and addition
+ */
+bInt32 multiply(bInt32 binary1, bInt32 binary2, bool* isError)
+{
+    bInt32 output = binaryZero();
+
+    // Check for overflow
+    // 16-bit number * 16-bit number = 32-bit number
+    if (!is16bitBinary(binary1) || !is16bitBinary(binary2)) {
+        *isError = true;
+        return output;
+    }
+
+    for (int i = 0; i < 32; ++i) {
+        if (binary2.digits[i] == 1)
+            output = add(output, binary1);
+        binary1 = leftShift(binary1, 1);
+    }
+    return output;
+}
+
+/**
  * Returns "-number" of given bInt32
  */
 bInt32 makeNegative(bInt32 binary)
