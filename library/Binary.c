@@ -77,16 +77,12 @@ bInt32 intTobInt32(int number)
 int bInt32ToInt(bInt32 binary)
 {
     int number = 0;
-    bool isNegative = binary.digits[31];
-    if (isNegative)
-        binary = makeNegative(binary);
     int powerOfTwo = 1;
-    for (int i = 0; i < 31; ++i) {
+    for (int i = 0; i < 32; ++i) {
         number += binary.digits[i] * powerOfTwo;
-        powerOfTwo *= 2;
+        powerOfTwo *= 2; // Here is an abuse of overflow UB to calculate negative number correctly, but in both clang and gcc 2^32 becomes -2^32, which is what we need
     }
-
-    return isNegative ? -number : number;
+    return number;
 }
 
 void printbInt32(bInt32 binary)
