@@ -37,6 +37,18 @@ bInt32 not(bInt32 binary)
 }
 
 /**
+ * Does left shift on given binary by given amount of places to shift
+ */
+bInt32 leftShift(bInt32 binary, int placesToShift)
+{
+    bInt32 shiftedBinary = binaryZero();
+    for (int i = placesToShift; i < 32; ++i)
+        shiftedBinary.digits[i] = binary.digits[i - placesToShift];
+
+    return shiftedBinary;
+}
+
+/**
  * Addition of two bInt32 numbers
  */
 bInt32 add(bInt32 binary1, bInt32 binary2)

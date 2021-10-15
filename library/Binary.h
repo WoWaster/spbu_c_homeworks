@@ -10,6 +10,7 @@ typedef struct bInt32 {
 
 bool is16bitBinary(bInt32 binary);
 bInt32 not(bInt32 binary);
+bInt32 leftShift(bInt32 binary, int placesToShift);
 bInt32 add(bInt32 binary1, bInt32 binary2);
 bInt32 makeNegative(bInt32 binary);
 bInt32 intTobInt32(int number);
