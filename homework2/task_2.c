@@ -9,31 +9,31 @@ void processData(char* inputFile, char* outputFile)
     FILE* input = fopen(inputFile, "r");
     FILE* output = fopen(outputFile, "w");
 
-    int M = 0;
-    fscanf(input, "%d", &M);
+    int sequenceLength = 0;
+    fscanf(input, "%d", &sequenceLength);
 
-    char buffer[128] = "";
+    char buffer[129] = "";
     fscanf(input, "%s", buffer);
     String* string = newString(buffer);
 
-    int N = 0;
-    fscanf(input, "%d", &N);
+    int numberOfCommands = 0;
+    fscanf(input, "%d", &numberOfCommands);
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < numberOfCommands; ++i) {
         char command[8] = "";
-        char arg1[64] = "";
-        char arg2[64] = "";
+        char firstArgument[128] = "";
+        char secondArgument[128] = "";
 
         fscanf(input, "%s", command);
-        fscanf(input, "%s", arg1);
-        fscanf(input, "%s", arg2);
+        fscanf(input, "%s", firstArgument);
+        fscanf(input, "%s", secondArgument);
 
         if (strcmp(command, "REPLACE") == 0)
-            replace(string, arg1, arg2);
+            replace(string, firstArgument, secondArgument);
         else if (strcmp(command, "INSERT") == 0)
-            insert(string, arg1, arg2);
+            insert(string, firstArgument, secondArgument);
         else if (strcmp(command, "DELETE") == 0)
-            delete (string, arg1, arg2);
+            delete(string, firstArgument, secondArgument);
 
         char* charString = stringToChar(string);
         fprintf(output, "%s\n", charString);
