@@ -32,3 +32,6 @@ target_link_libraries(HW2_Task_1 io_lib LinkedMap)
 
 add_executable(HW3_Task_1 homework3/task_1.c)
 target_link_libraries(HW3_Task_1 Binary io_lib)
+
+add_executable(HW3_Task_3 homework3/task_3.c)
+target_link_libraries(HW3_Task_3 Binary io_lib)
