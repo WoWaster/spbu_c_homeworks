@@ -31,16 +31,23 @@ Node* newNode(char value)
 String* newString(const char* input)
 {
     String* string = malloc(sizeof(String));
+    if (!*input) {
+        string->head = NULL;
+        string->tail = NULL;
+        string->length = 0;
+        return string;
+    }
     string->head = newNode(input[0]);
+    string->length = 1;
     Node* before = string->head;
-    for (int i = 1; i < strlen(input); ++i) {
-        Node* new = newNode(input[i]);
+    for (const char* pointer = input + 1; *pointer; pointer++) {
+        Node* new = newNode(*pointer);
         before->next = new;
         new->prev = before;
         before = new;
+        string->length++;
     }
     string->tail = before;
-    string->length = strlen(input);
     return string;
 }
 
