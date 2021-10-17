@@ -118,6 +118,10 @@ void replaceInString(String* string, const char* template, const char* fragment)
         string->head = insertion->head;
     insertion->head->prev = substring->head->prev;
     insertion->tail->next = substring->tail->next;
+    if (substring->tail->next)
+        substring->tail->next->prev = insertion->tail;
+    else
+        string->tail = insertion->tail;
     string->length = string->length - substring->length + insertion->length;
 
     freeString(substring);
