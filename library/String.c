@@ -92,14 +92,18 @@ void insertInString(String* string, const char* start, const char* template)
     String* location = find(string, start);
     Node* before = location->tail;
     Node* after = location->tail->next;
-    for (int i = 0; i < strlen(template); ++i) {
-        Node* new = newNode(template[i]);
-        before->next = new;
-        new->prev = before;
-        before = new;
-    }
-    before->next = after;
-    string->length += strlen(template);
+
+    String* templateString = newString(template);
+    templateString->head->prev = before;
+    before->next = templateString->head;
+    templateString->tail->next = after;
+    if (after)
+        after->prev = templateString->tail;
+    else
+        string->tail = templateString->tail;
+    string->length += templateString->length;
+
+    free(templateString);
     free(location);
 }
 
