@@ -6,9 +6,9 @@ typedef struct String String;
 
 String* newString(const char* input);
 size_t getLength(String* string);
-void insert(String* string, const char* start, const char* template);
-void replace(String* string, const char* template, const char* fragment);
-void delete (String* string, const char* start, const char* end);
+void insertInString(String* string, const char* start, const char* template);
+void replaceInString(String* string, const char* template, const char* fragment);
+void deleteInString(String* string, const char* start, const char* end);
 char* stringToChar(String* string);
 void printString(String* string);
 void freeString(String* string);

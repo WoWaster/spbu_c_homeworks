@@ -80,7 +80,7 @@ String* find(String* string, const char* template)
     return substring;
 }
 
-void insert(String* string, const char* start, const char* template)
+void insertInString(String* string, const char* start, const char* template)
 {
     String* location = find(string, start);
     Node* before = location->tail;
@@ -96,7 +96,7 @@ void insert(String* string, const char* start, const char* template)
     free(location);
 }
 
-void replace(String* string, const char* template, const char* fragment)
+void replaceInString(String* string, const char* template, const char* fragment)
 {
     String* substring = find(string, template);
     String* insertion = newString(fragment);
@@ -113,7 +113,7 @@ void replace(String* string, const char* template, const char* fragment)
     free(insertion);
 }
 
-void delete (String* string, const char* start, const char* end)
+void deleteInString(String* string, const char* start, const char* end)
 {
     String* foundStart = find(string, start);
     String* foundEnd = find(string, end);

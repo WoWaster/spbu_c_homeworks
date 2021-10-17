@@ -29,11 +29,11 @@ void processData(char* inputFile, char* outputFile)
         fscanf(input, "%s", secondArgument);
 
         if (strcmp(command, "REPLACE") == 0)
-            replace(string, firstArgument, secondArgument);
+            replaceInString(string, firstArgument, secondArgument);
         else if (strcmp(command, "INSERT") == 0)
-            insert(string, firstArgument, secondArgument);
+            insertInString(string, firstArgument, secondArgument);
         else if (strcmp(command, "DELETE") == 0)
-            delete(string, firstArgument, secondArgument);
+            deleteInString(string, firstArgument, secondArgument);
 
         char* charString = stringToChar(string);
         fprintf(output, "%s\n", charString);
