@@ -57,14 +57,16 @@ String* newString(const char* input)
     return string;
 }
 
-/**
- * You must free substring by using free not freeString.
- * @return new String where head=template[0] and tail=template[-1]
- */
-String* find(String* string, const char* template)
+bool startsWith(Node* sequence, Node* pattern)
 {
-    String* templateString = newString(template);
-    String* substring = malloc(sizeof(String));
+    while (pattern) {
+        if (!sequence || sequence->value != pattern->value)
+            return false;
+        sequence = sequence->next;
+        pattern = pattern->next;
+    }
+    return true;
+}
 
     for (Node* current = string->head; current; current = current->next) {
         Node* currentTemplate = templateString->head;
