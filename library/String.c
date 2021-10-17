@@ -137,22 +137,28 @@ void replaceInString(String* string, const char* template, const char* fragment)
 void deleteInString(String* string, const char* start, const char* end)
 {
     String* foundStart = find(string, start);
-    String* foundEnd = find(string, end);
+    String* foundEnd = findInSubstring(foundStart->tail->next, string->tail, end);
 
-    foundStart->head->prev->next = foundEnd->tail->next;
+    if (foundStart->head->prev)
+        foundStart->head->prev->next = foundEnd->tail->next;
+    else
+        string->head = foundEnd->tail->next;
     if (foundEnd->tail->next)
         foundEnd->tail->next->prev = foundStart->head->prev;
+    else
+        string->tail = foundStart->head->prev;
 
-    Node* current = foundStart->head;
-    while (current != foundEnd->tail->next) {
+    Node* current = foundStart->tail->next;
+    while (current != foundEnd->head) {
         Node* next = current->next;
         free(current);
         current = next;
         string->length -= 1;
     }
+    string->length -= (foundStart->length + foundEnd->length);
 
-    free(foundStart);
-    free(foundEnd);
+    freeString(foundStart);
+    freeString(foundEnd);
 }
 
 void printString(String* string)
