@@ -161,8 +161,6 @@ char* stringToChar(String* string)
 
     Node* current = string->head;
     for (int i = 0; i < string->length; ++i) {
-        if (!current)
-            break;
         output[i] = current->value;
         current = current->next;
     }
