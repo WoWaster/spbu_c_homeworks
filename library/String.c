@@ -1,6 +1,5 @@
 #include "String.h"
 #include <stdio.h>
-#include <string.h>
 
 struct String {
     struct Node* head;
