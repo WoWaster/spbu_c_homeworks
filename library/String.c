@@ -68,31 +68,30 @@ bool startsWith(Node* sequence, Node* pattern)
     return true;
 }
 
-    for (Node* current = string->head; current; current = current->next) {
-        Node* currentTemplate = templateString->head;
-        Node* currentString = current;
-        Node* previousString = NULL;
-        bool flag = true;
-        while (currentTemplate) {
-            if (currentTemplate->value != currentString->value) {
-                flag = false;
-                break;
-            }
+StringView* findInSubstring(Node* start, Node* end, const char* template)
+{
+    String* templateString = newString(template);
 
-            currentTemplate = currentTemplate->next;
-            previousString = currentString;
-            currentString = currentString->next;
-        }
-        if (flag) {
-            substring->head = current;
-            substring->tail = previousString;
-            substring->length = strlen(template);
-            break;
+    for (Node* current = start; current != end->next; current = current->next) {
+        if (startsWith(current, templateString->head)) {
+            StringView* foundString = malloc(sizeof(StringView));
+            foundString->head = current;
+            Node* tail = current;
+            for (int i = 0; i < templateString->length - 1; ++i)
+                tail = tail->next;
+            foundString->tail = tail;
+            foundString->length = templateString->length;
+            freeString(templateString);
+            return foundString;
         }
     }
-
     freeString(templateString);
-    return substring;
+    return NULL;
+}
+
+StringView* find(String* string, const char* template)
+{
+    return findInSubstring(string->head, string->tail, template);
 }
 
 void insertInString(String* string, const char* start, const char* template)
