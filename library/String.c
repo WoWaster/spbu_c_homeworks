@@ -14,6 +14,12 @@ typedef struct Node {
     struct Node* next;
 } Node;
 
+/**
+ * Actually is a part of existing String, so head and tail may have links where NULL is expected.
+ * Be cautious while using freeString on StringView, it may not be desired.
+ */
+typedef String StringView;
+
 size_t getLength(String* string)
 {
     return string->length;
