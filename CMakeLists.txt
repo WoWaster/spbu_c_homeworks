@@ -37,3 +37,6 @@ target_link_libraries(Test1_task1 io_lib m)
 
 add_executable(Test1_task2 test1/task2.c)
 target_link_libraries(Test1_task2 io_lib List)
+
+add_executable(HW4_task_1 homework4/task_1.c)
+target_link_libraries(HW4_task_1 MergeSort io_lib)
