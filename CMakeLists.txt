@@ -11,6 +11,8 @@ add_library(io_lib STATIC library/io.c)
 add_library(array_lib STATIC library/array.c)
 add_library(LinkedMap STATIC library/LinkedMap.c)
 add_library(List STATIC library/list.c)
+add_library(MergeSort STATIC library/MergeSort.c)
+target_link_libraries(MergeSort library)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
