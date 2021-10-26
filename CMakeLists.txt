@@ -10,6 +10,7 @@ add_library(library ${SOURCE_LIB})
 add_library(io_lib STATIC library/io.c)
 add_library(array_lib STATIC library/array.c)
 add_library(LinkedMap STATIC library/LinkedMap.c)
+add_library(Binary STATIC library/Binary.c)
 add_library(List STATIC library/list.c)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
@@ -29,6 +30,9 @@ target_link_libraries(HW1_Task_5 io_lib)
 
 add_executable(HW2_Task_1 homework2/task_1.c)
 target_link_libraries(HW2_Task_1 io_lib LinkedMap)
+
+add_executable(HW3_Task_1 homework3/task_1.c)
+target_link_libraries(HW3_Task_1 Binary io_lib)
 
 add_executable(Test1_task1 test1/task1.c)
 target_link_libraries(Test1_task1 io_lib m)
