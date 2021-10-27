@@ -15,14 +15,12 @@ bInt32 binaryZero()
  */
 bool is16bitBinary(bInt32 binary)
 {
-    bool result = true;
     int extendDigit = binary.digits[31];
     for (int i = 15; i < 32; i++)
-        if (binary.digits[i] != extendDigit) {
-            result = false;
-            break;
-        }
-    return result;
+        if (binary.digits[i] != extendDigit)
+            return false;
+
+    return true;
 }
 
 /**
