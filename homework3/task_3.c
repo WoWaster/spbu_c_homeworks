@@ -21,7 +21,7 @@ int main()
 
     if (error) {
         printf("Can't multiply because of integer (2^31-1) overflow. Aborting.\n");
-        return 1;
+        return 0;
     }
 
     printf("a:  \t");
