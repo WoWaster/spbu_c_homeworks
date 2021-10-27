@@ -122,11 +122,13 @@ bInt32 intTobInt32(int number)
 int bInt32ToInt(bInt32 binary)
 {
     int number = 0;
-    int powerOfTwo = 1;
-    for (int i = 0; i < 32; ++i) {
-        number += binary.digits[i] * powerOfTwo;
-        powerOfTwo *= 2; // Here is an abuse of overflow UB to calculate negative number correctly, but in both clang and gcc 2^32 becomes -2^32, which is what we need
+    long powerOfTwo = 1; // long is needed because at 30th step of loop we get 2^31 which is bigger than int (2^31-1)
+    for (int i = 0; i < 31; ++i) {
+        number += (int)(binary.digits[i] * powerOfTwo);
+        powerOfTwo *= 2;
     }
+    powerOfTwo = -powerOfTwo;
+    number += (int)(binary.digits[31] * powerOfTwo);
     return number;
 }
 
