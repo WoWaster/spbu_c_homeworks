@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+typedef union Number {
+    double value;
+    unsigned char binaryForm[8];
+} Number;
+
 void hexToBinary(const char hex[17], char bin[65])
 {
     const char binary[16][5] = { "0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111", "1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111" };
@@ -12,22 +17,21 @@ void hexToBinary(const char hex[17], char bin[65])
     }
 }
 
-void doubleToBinary(double number, char binary[65])
+void doubleToBinary(unsigned char number[8], char binary[65])
 {
-    unsigned char* pointer = (unsigned char*)&number + sizeof(double) - 1;
     char hex[17] = "";
-    for (int i = sizeof(double); i > 0; --i) {
+    for (int i = 7; i >= 0; --i) {
         char buffer[4] = "";
-        sprintf(buffer, "%02X", *pointer--);
+        sprintf(buffer, "%02X", number[i]);
         strcat(hex, buffer);
     }
     hexToBinary(hex, binary);
 }
 
-void printNormalizedBinaryDouble(double number)
+void printNormalizedBinaryDouble(Number number)
 {
     char binary[65] = "";
-    doubleToBinary(number, binary);
+    doubleToBinary(number.binaryForm, binary);
 
     double powerOfTwo = 1024;
 
@@ -56,11 +60,11 @@ void printNormalizedBinaryDouble(double number)
 
 int main()
 {
-    double number = 0;
+    Number number = { 0 };
 
     printf("This app will print normalized form of given double.\n");
     printf("Enter the double: ");
-    scanf("%lf", &number);
+    scanf("%lf", &number.value);
     printNormalizedBinaryDouble(number);
 
     return 0;
