@@ -4,6 +4,7 @@
 #include "../library/Binary.h"
 #include "../library/io.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -34,5 +35,8 @@ int main()
     printbInt32(productBinary);
     printf(" = %d\n", product);
 
+    free(aBinary);
+    free(bBinary);
+    free(productBinary);
     return 0;
 }
