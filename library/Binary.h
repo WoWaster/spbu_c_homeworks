@@ -4,9 +4,7 @@
 /**
  * 32 bits int in binary representation
  */
-typedef struct bInt32 {
-    int digits[32];
-} bInt32;
+typedef struct bInt32* bInt32;
 
 bool is16bitBinary(bInt32 binary);
 bInt32 not(bInt32 binary);
