@@ -7,6 +7,7 @@
 #include "../library/Binary.h"
 #include "../library/io.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
@@ -30,5 +31,8 @@ int main()
     printbInt32(sumBinary);
     printf(" = %d\n", sum);
 
+    free(aBinary);
+    free(bBinary);
+    free(sumBinary);
     return 0;
 }
