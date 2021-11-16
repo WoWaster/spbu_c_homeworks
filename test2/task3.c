@@ -19,9 +19,11 @@ Date findEarliestDate(char* inputFile)
         sscanf(buffer, "%2d.%2d.%4d", &date.day, &date.month, &date.year);
         if (date.day == 0 && date.month == 0 && date.year == 0)
             continue;
+        if (date.month > 12)
+            continue;
         if (date.day > 31)
             continue;
-        if (date.month > 12)
+        if (date.month == 2 && date.day > 29)
             continue;
         if (date.year < minDate.year) {
             minDate.year = date.year;
