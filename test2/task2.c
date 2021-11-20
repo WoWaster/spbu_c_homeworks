@@ -33,5 +33,8 @@ int main()
     mergeArrays(array1, length1, array2, length2, output, outputLength);
     printArrayOfInts("Result: ", output, outputLength);
 
+    free(array1);
+    free(array2);
+    free(output);
     return 0;
 }
