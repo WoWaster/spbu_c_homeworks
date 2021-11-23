@@ -12,5 +12,6 @@ int main()
     inputArrayOfInts("Now enter contents of array: ", array, size);
     sort(array, size);
     printArrayOfInts("Sorted array: ", array, size);
+    free(array);
     return 0;
 }
