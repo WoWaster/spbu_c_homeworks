@@ -16,6 +16,8 @@ add_library(List STATIC library/list.c)
 add_library(Values STATIC library/values/values.c)
 add_library(ArrayList STATIC library/list/arrayList.c)
 target_link_libraries(ArrayList Values)
+add_library(TreeMap STATIC library/TreeMap.c)
+target_link_libraries(TreeMap Values library)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
