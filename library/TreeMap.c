@@ -185,25 +185,6 @@ Node* find(Node* node, Value key, Comparator comparator)
     return NULL;
 }
 
-Node* findLowerBound(Node* node, Value key, Comparator comparator)
-{
-    if (!node)
-        return NULL;
-
-    switch (comparator(key, node->key)) {
-    case -1: {
-        Node* result = findLowerBound(node->leftChild, key, comparator);
-        return result ? result : node;
-    }
-    case 1: {
-        return findLowerBound(node->rightChild, key, comparator);
-    }
-    case 0:
-        return node;
-    }
-    return NULL;
-}
-
 struct TreeMap {
     Node* root;
     Comparator comparator;
