@@ -49,5 +49,11 @@ target_link_libraries(Test1_task1 io_lib m)
 add_executable(Test1_task2 test1/task2.c)
 target_link_libraries(Test1_task2 List io_lib m)
 
+add_executable(Test2_task1 test2/task_1.c)
+target_link_libraries(Test2_task1 io_lib)
+
+add_executable(Test2_task2 test2/task2.c)
+target_link_libraries(Test2_task2 io_lib)
+
 add_executable(Test2_task3 test2/task3.c)
-target_link_libraries(Test2_task3 io_lib )
+target_link_libraries(Test2_task3 io_lib)
