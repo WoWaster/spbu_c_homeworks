@@ -51,3 +51,6 @@ target_link_libraries(Test1_task2 List io_lib m)
 
 add_executable(Test2_task1 test2/task_1.c)
 target_link_libraries(Test2_task1 io_lib)
+
+add_executable(HW7_Task_1 homework7/task_1.c)
+target_link_libraries(HW7_Task_1 io_lib)
