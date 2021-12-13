@@ -8,24 +8,11 @@ enum {
     NOT_IN_ACCEPT_STATE = 43
 };
 
-typedef struct {
-    bool (*validator)(char);
-    int toStateID;
-} DFATransition;
+typedef struct DFATransition DFATransition;
 
-typedef struct {
-    int ID;
-    bool isAcceptState;
-    int numberOfTransitions;
-    DFATransition* transitions;
-} DFAState;
+typedef struct DFAState DFAState;
 
-typedef struct {
-    int startStateID;
-    int currentStateID;
-    int numberOfStates;
-    DFAState** states;
-} DFA;
+typedef struct DFA DFA;
 
 DFA* createDFA(int numberOfStates);
 DFATransition createDFATransition(bool (*validator)(char), int toStateID);

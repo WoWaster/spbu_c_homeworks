@@ -2,6 +2,25 @@
 #include <stdarg.h>
 #include <stdlib.h>
 
+struct DFATransition {
+    bool (*validator)(char);
+    int toStateID;
+};
+
+struct DFAState {
+    int ID;
+    bool isAcceptState;
+    int numberOfTransitions;
+    DFATransition** transitions;
+};
+
+struct DFA {
+    int startStateID;
+    int currentStateID;
+    int numberOfStates;
+    DFAState** states;
+};
+
 DFA* createDFA(int numberOfStates)
 {
     DFA* dfa = malloc(sizeof(DFA));
