@@ -15,7 +15,7 @@ typedef struct DFAState DFAState;
 typedef struct DFA DFA;
 
 DFA* createDFA(int numberOfStates);
-DFATransition createDFATransition(bool (*validator)(char), int toStateID);
+DFATransition* createDFATransition(bool (*validator)(char), int toStateID);
 DFAState* createDFAState(int ID, bool isAcceptState, int numberOfTransitions, ...);
 void addDFAState(DFA* dfa, DFAState* state);
 bool parseUsingDFA(const char* string, DFA* dfa, int* error);

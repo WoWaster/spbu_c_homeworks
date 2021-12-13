@@ -31,9 +31,11 @@ DFA* createDFA(int numberOfStates)
     return dfa;
 }
 
-DFATransition createDFATransition(bool (*validator)(char), int toStateID)
+DFATransition* createDFATransition(bool (*validator)(char), int toStateID)
 {
-    DFATransition transition = { validator, toStateID };
+    DFATransition* transition = malloc(sizeof(DFATransition));
+    transition->validator = validator;
+    transition->toStateID = toStateID;
     return transition;
 }
 
@@ -48,7 +50,7 @@ DFAState* createDFAState(int ID, bool isAcceptState, int numberOfTransitions, ..
     state->numberOfTransitions = numberOfTransitions;
     state->transitions = calloc(numberOfTransitions, sizeof(DFATransition));
     for (int i = 0; i < numberOfTransitions; ++i) {
-        DFATransition transition = va_arg(transitions, DFATransition);
+        DFATransition* transition = va_arg(transitions, DFATransition*);
         state->transitions[i] = transition;
     }
 
@@ -69,8 +71,8 @@ bool parseUsingDFA(const char* string, DFA* dfa, int* error)
         DFAState* currentState = dfa->states[dfa->currentStateID];
         bool wasTransition = false;
         for (int i = 0; i < currentState->numberOfTransitions; ++i) {
-            if (currentState->transitions[i].validator(*string)) {
-                dfa->currentStateID = currentState->transitions[i].toStateID;
+            if (currentState->transitions[i]->validator(*string)) {
+                dfa->currentStateID = currentState->transitions[i]->toStateID;
                 wasTransition = true;
                 break;
             }
@@ -94,6 +96,10 @@ void destroyDFA(DFA* dfa)
 {
     for (int i = 0; i < dfa->numberOfStates; ++i)
         if (dfa->states[i]) {
+            if (dfa->states[i]->transitions)
+                for (int j = 0; j < dfa->states[i]->numberOfTransitions; ++j)
+                    free(dfa->states[i]->transitions[j]);
+
             free(dfa->states[i]->transitions);
             free(dfa->states[i]);
         }
