@@ -31,7 +31,7 @@ DFA* createDFA(int numberOfStates);
 DFATransition createDFATransition(bool (*validator)(char), int toStateID);
 DFAState* createDFAState(int ID, bool isAcceptState, int numberOfTransitions, ...);
 void addDFAState(DFA* dfa, DFAState* state);
-bool parseUsinfDFA(const char* string, DFA* dfa, int* error);
+bool parseUsingDFA(const char* string, DFA* dfa, int* error);
 void resetDFA(DFA* dfa);
 void destroyDFA(DFA* dfa);
 

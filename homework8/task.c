@@ -25,7 +25,7 @@ int main()
     printf("Please enter number: ");
     scanf("%s", number);
 
-    bool out = parseUsinfDFA(number, dfa, &error);
+    bool out = parseUsingDFA(number, dfa, &error);
 
     if (out)
         printf("This is a number");

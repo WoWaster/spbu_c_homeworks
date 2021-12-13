@@ -42,7 +42,7 @@ void addDFAState(DFA* dfa, DFAState* state)
     dfa->states[state->ID] = state;
 }
 
-bool parseUsinfDFA(const char* string, DFA* dfa, int* error)
+bool parseUsingDFA(const char* string, DFA* dfa, int* error)
 {
     while (*string != '\0') {
         DFAState* currentState = dfa->states[dfa->currentStateID];
