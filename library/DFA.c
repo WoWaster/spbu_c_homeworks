@@ -44,6 +44,8 @@ void addDFAState(DFA* dfa, DFAState* state)
 
 bool parseUsingDFA(const char* string, DFA* dfa, int* error)
 {
+    dfa->currentStateID = dfa->startStateID;
+
     while (*string != '\0') {
         DFAState* currentState = dfa->states[dfa->currentStateID];
         bool wasTransition = false;
@@ -67,11 +69,6 @@ bool parseUsingDFA(const char* string, DFA* dfa, int* error)
         *error = NOT_IN_ACCEPT_STATE;
         return false;
     }
-}
-
-void resetDFA(DFA* dfa)
-{
-    dfa->currentStateID = dfa->startStateID;
 }
 
 void destroyDFA(DFA* dfa)
