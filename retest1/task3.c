@@ -14,7 +14,7 @@ void evenInsertionSort(int* array, int arraySize)
 
 int main()
 {
-    bool isInteractive = false;
+    int isInteractive = 0;
     printf("Enter 0 for automatic mode or 1 for interactive mode: ");
     scanf("%d", &isInteractive);
 
@@ -27,10 +27,10 @@ int main()
         inputArrayOfInts("Input array: ", array, length);
     } else {
         srand(time(NULL));
-        int length = rand() % 256;
+        length = (rand() % 256) + 1;
         array = calloc(length, sizeof(int));
         for (int i = 0; i < length; ++i)
-            array[i] = rand() % 31 + 11;
+            array[i] = (rand() % 32) + 11;
     }
 
     evenInsertionSort(array, length);
