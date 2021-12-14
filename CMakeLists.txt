@@ -13,6 +13,8 @@ add_library(LinkedMap STATIC library/LinkedMap.c)
 add_library(String STATIC library/String.c)
 add_library(Binary STATIC library/Binary.c)
 add_library(List STATIC library/list.c)
+add_library(ComplexNumber STATIC library/ComplexNumber.c)
+target_link_libraries(ComplexNumber m)
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
@@ -57,3 +59,6 @@ target_link_libraries(Test2_task2 io_lib)
 
 add_executable(Test2_task3 test2/task3.c)
 target_link_libraries(Test2_task3 io_lib)
+
+add_executable(Retest1_task1 retest1/task1.c)
+target_link_libraries(Retest1_task1 ComplexNumber)
