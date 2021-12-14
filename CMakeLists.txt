@@ -61,3 +61,6 @@ target_link_libraries(Test2_task3 io_lib)
 
 add_executable(HW8_task homework8/task.c)
 target_link_libraries(HW8_task DFA)
+
+add_executable(Retest1_task3 retest1/task3.c)
+target_link_libraries(Retest1_task3 array_lib io_lib)
