@@ -163,6 +163,7 @@ Node* remove(Node* node, Value key, Comparator comparator, MapEntry* entry, Node
         minimumInRightTree->rightChild->parent = minimumInRightTree;
         minimumInRightTree->leftChild = leftChild;
         leftChild->parent = minimumInRightTree;
+        minimumInRightTree->parent = parent;
         return balance(minimumInRightTree);
     }
     }
@@ -225,7 +226,7 @@ Value get(TreeMap* map, Value key)
 bool hasKey(TreeMap* map, Value key)
 {
     Node* node = find(map->root, key, map->comparator);
-    return node ? true : false;
+    return node;
 }
 
 Value getLowerBound(TreeMap* map, Value key)
@@ -248,7 +249,7 @@ Value getUpperBound(TreeMap* map, Value key)
     Node* current = map->root;
     Node* found = NULL;
     while (current) {
-        if (map->comparator(key, current->key) == -1) {
+        if (map->comparator(key, current->key) >= 0) {
             current = current->rightChild;
         } else {
             found = current;
@@ -273,13 +274,8 @@ Value getMinimum(TreeMap* map)
 TreeMapIterator getIterator(TreeMap* map)
 {
     TreeMapIterator iterator = { map->root };
-
-    iterator.current = map->root;
-    if (!iterator.current)
-        return iterator;
-    while (iterator.current->leftChild)
-        iterator.current = iterator.current->leftChild;
-
+    if (iterator.current)
+        iterator.current = minimum(map->root);
     return iterator;
 }
 
@@ -297,24 +293,15 @@ void next(TreeMapIterator* iterator)
 {
     if (iterator->current->rightChild) {
         iterator->current = iterator->current->rightChild;
-        while (iterator->current->leftChild)
-            iterator->current = iterator->current->leftChild;
+        iterator->current = minimum(iterator->current);
         return;
     }
-    while (true) {
-        if (!iterator->current->parent) {
-            iterator->current = NULL;
-            return;
-        }
-        if (iterator->current->parent->leftChild == iterator->current) {
-            iterator->current = iterator->current->parent;
-            return;
-        }
+    while (iterator->current->parent && iterator->current->parent->leftChild != iterator->current)
         iterator->current = iterator->current->parent;
-    }
+    iterator->current = iterator->current->parent;
 }
 
 bool hasElement(TreeMapIterator* iterator)
 {
-    return iterator->current ? true : false;
+    return iterator->current;
 }
