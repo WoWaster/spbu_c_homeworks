@@ -7,10 +7,9 @@ void DFS(int** matrix, int vertices, int paths, int vertex, bool* visitedVertexe
     if (visitedVertexes[vertex])
         return;
 
+    visitedVertexes[vertex] = true;
     for (int i = 0; i < paths; ++i) {
         if (matrix[vertex][i] > 0) {
-            visitedVertexes[vertex] = true;
-
             for (int j = 0; j < vertices; ++j)
                 if (matrix[j][i] < 0)
                     DFS(matrix, vertices, paths, j, visitedVertexes);
