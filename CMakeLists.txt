@@ -13,9 +13,12 @@ add_library(LinkedMap STATIC library/LinkedMap.c)
 add_library(String STATIC library/String.c)
 add_library(Binary STATIC library/Binary.c)
 add_library(List STATIC library/list.c)
+add_library(MergeSort STATIC library/MergeSort.c)
+target_link_libraries(MergeSort library)
 add_library(DFA STATIC library/DFA.c)
 add_library(ComplexNumber STATIC library/ComplexNumber.c)
 target_link_libraries(ComplexNumber m)
+
 
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
@@ -51,6 +54,9 @@ target_link_libraries(Test1_task1 io_lib m)
 
 add_executable(Test1_task2 test1/task2.c)
 target_link_libraries(Test1_task2 List io_lib m)
+
+add_executable(HW4_task_1 homework4/task_1.c)
+target_link_libraries(HW4_task_1 MergeSort io_lib)
 
 add_executable(Test2_task1 test2/task_1.c)
 target_link_libraries(Test2_task1 io_lib)
