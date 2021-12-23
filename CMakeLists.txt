@@ -68,3 +68,4 @@ add_executable(Retest1_task1 retest1/task1.c)
 target_link_libraries(Retest1_task1 ComplexNumber)
 
 add_executable(Final_task2 final/task2.c)
+add_executable(Final_task3 final/task3.c)
