@@ -14,6 +14,23 @@ add_library(String STATIC library/String.c)
 add_library(Binary STATIC library/Binary.c)
 add_library(List STATIC library/list.c)
 
+add_library(MergeSort STATIC library/MergeSort.c)
+target_link_libraries(MergeSort library)
+
+add_library(Values STATIC library/values/values.c)
+
+add_library(ArrayList STATIC library/list/arrayList.c)
+target_link_libraries(ArrayList Values)
+
+add_library(TreeMap STATIC library/TreeMap.c)
+target_link_libraries(TreeMap Values library)
+
+add_library(DFA STATIC library/DFA.c)
+
+add_library(ComplexNumber STATIC library/ComplexNumber.c)
+target_link_libraries(ComplexNumber m)
+
+
 add_executable(HW1_Task_1 homework1/task_1.c)
 target_link_libraries(HW1_Task_1 io_lib)
 
@@ -49,8 +66,35 @@ target_link_libraries(Test1_task1 io_lib m)
 add_executable(Test1_task2 test1/task2.c)
 target_link_libraries(Test1_task2 List io_lib m)
 
+add_executable(HW4_task_1 homework4/task_1.c)
+target_link_libraries(HW4_task_1 MergeSort io_lib)
+
+add_executable(HW5_Task_1 homework5/task_1.c)
+target_link_libraries(HW5_Task_1 TreeMap io_lib)
+
 add_executable(Test2_task1 test2/task_1.c)
 target_link_libraries(Test2_task1 io_lib)
 
+add_executable(Test2_task2 test2/task2.c)
+target_link_libraries(Test2_task2 io_lib)
+
+add_executable(Test2_task3 test2/task3.c)
+target_link_libraries(Test2_task3 io_lib)
+
 add_executable(HW7_Task_1 homework7/task_1.c)
 target_link_libraries(HW7_Task_1 io_lib)
+
+add_executable(HW8_task homework8/task.c)
+target_link_libraries(HW8_task DFA)
+
+add_executable(Retest1_task1 retest1/task1.c)
+target_link_libraries(Retest1_task1 ComplexNumber)
+
+add_executable(Retest1_task3 retest1/task3.c)
+target_link_libraries(Retest1_task3 array_lib io_lib)
+
+add_executable(Final_task1 final/task1.c)
+target_link_libraries(Final_task1 TreeMap Values)
+
+add_executable(Final_task2 final/task2.c)
+add_executable(Final_task3 final/task3.c)
