@@ -81,6 +81,9 @@ target_link_libraries(Test2_task2 io_lib)
 add_executable(Test2_task3 test2/task3.c)
 target_link_libraries(Test2_task3 io_lib)
 
+add_executable(HW7_Task_1 homework7/task_1.c)
+target_link_libraries(HW7_Task_1 io_lib)
+
 add_executable(HW8_task homework8/task.c)
 target_link_libraries(HW8_task DFA)
 
@@ -95,4 +98,3 @@ target_link_libraries(Final_task1 TreeMap Values)
 
 add_executable(Final_task2 final/task2.c)
 add_executable(Final_task3 final/task3.c)
-
